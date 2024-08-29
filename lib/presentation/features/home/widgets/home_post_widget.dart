@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/models/comment.dart';
+import 'package:instagram_clone/models/post_model.dart';
 import 'package:instagram_clone/shared/shared_widgets.dart';
 
-class PostWidget extends StatelessWidget {
-  const PostWidget({super.key});
+class PostWidget extends StatefulWidget {
+  final Post post;
+  const PostWidget({super.key, required this.post});
+
+  @override
+  State<PostWidget> createState() => _PostWidgetState();
+}
+
+class _PostWidgetState extends State<PostWidget> {
+  final TextEditingController addCommentController = TextEditingController();
+
+  @override
+  void dispose() {
+    addCommentController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    final user = widget.post.user;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +64,47 @@ class PostWidget extends StatelessWidget {
             ),
           ],
         ),
-        Text('')
+        Row(
+          children: [
+            Text(user.username),
+            if (user.isVerfied) Image.asset(""),
+            Text(widget.post.caption)
+          ],
+        ),
+        Text(
+            "view all ${widget.post.commentCount} ${widget.post.commentCount > 0 ? "Comments" : "Comment"}"),
+        if (widget.post.comments.isNotEmpty)
+          ...widget.post.comments.take(2).map(
+                (e) => _buildHomeComments(e),
+              ),
+        addComment()
+      ],
+    );
+  }
+
+  Widget _buildHomeComments(Comment comment) {
+    return Expanded(
+        child: Row(
+      children: [
+        Text(comment.user.username),
+        Text(comment.text),
+      ],
+    ));
+  }
+
+  Widget addComment() {
+    return Row(
+      children: [
+        Expanded(
+            child: TextField(
+          controller: addCommentController,
+        )),
+        if (addCommentController.text.isNotEmpty)
+          InkWell(
+            onTap: () {},
+            child: const Text("Post"),
+          ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.emoji_emotions))
       ],
     );
   }

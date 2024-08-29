@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instagram_clone/presentation/features/home/widgets/home_view_content.dart';
+import 'package:instagram_clone/presentation/features/home/home_view_content.dart';
 import 'package:instagram_clone/presentation/features/profile/profile_view.dart';
 import 'package:instagram_clone/presentation/features/reels/reels_view.dart';
 import 'package:instagram_clone/presentation/shared/viewmodels/bottom_nav_index_manager.dart';
