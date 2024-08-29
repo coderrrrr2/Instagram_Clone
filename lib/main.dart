@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:instagram_clone/presentation/home/home_view.dart';
+import 'package:instagram_clone/presentation/features/home/home_view.dart';
+import 'package:instagram_clone/theme_data.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -11,7 +12,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        debugShowCheckedModeBanner: false, home: HomeView());
+    return MaterialApp(
+        theme: darkTheme,
+        debugShowCheckedModeBanner: false,
+        home: const HomeView());
   }
 }

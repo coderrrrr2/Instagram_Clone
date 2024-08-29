@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/presentation/features/home/widgets/stories_list.dart';
 import 'package:instagram_clone/shared/app_bar.dart';
-import 'package:instagram_clone/shared/bottom_nav_bar.dart';
 
 class HomeViewContent extends StatelessWidget {
   const HomeViewContent({super.key});
@@ -25,10 +25,10 @@ class HomeViewContent extends StatelessWidget {
                 onPressed: () {},
               ),
             ],
-          )
+          ),
+          const Expanded(child: StoriesList()),
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

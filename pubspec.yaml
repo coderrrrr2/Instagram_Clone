@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_instagram_stories: ^1.0.3+3
   flutter_riverpod: ^2.5.1
+  intl: ^0.19.0
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
